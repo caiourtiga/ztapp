@@ -6,7 +6,7 @@ import './App.css'
 const App = () => {
    const [posts, setPosts] = useState([]);
    useEffect(() => {
-      fetch('https://jsonplaceholder.typicode.com/posts?_limit=10')
+      fetch('https://jsonplaceholder.typicode.com/posts?_limit=20')
          .then((response) => response.json())
          .then((data) => {
             console.log(data);
@@ -21,10 +21,11 @@ const App = () => {
     <div className="posts-container">
        {posts.map((post) => {
           return (
-             <div className="post-card" key={post.id}>
-                <h2 className="post-title">{post.title}</h2>
-                <div className="button">
-                </div>
+             <div className='posts-titles'>
+                  <tr>
+                     <td className="post-id"> {post.id}. </td>
+                     <td><a href={'https://jsonplaceholder.typicode.com/posts/' + post.id + '/comments'} target="_blank" rel="noopener noreferrer" className="post-title">{post.title}</a></td>
+                  </tr>
              </div>
           );
        })}
